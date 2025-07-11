@@ -6,3 +6,8 @@ From the Wikipedia article on
 > random variables with this distribution has the same distribution, up to
 > location and scale parameters.
 
+##
+
+> When U and V are two independent normally distributed random variables
+> with expected value 0 and variance 1,
+> then the ratio U/V has the standard Cauchy distribution. 
