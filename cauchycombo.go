@@ -11,9 +11,9 @@ import (
 
 func main() {
 	g1 := flag.Float64("g1", 1.0, "first distribution's gamma value")
-	g2 := flag.Float64("g2", 1.0, "second distribution's gamma value")
+	g2 := flag.Float64("g2", 2.0, "second distribution's gamma value")
 	l1 := flag.Float64("l1", 0.0, "first distribution's location")
-	l2 := flag.Float64("l2", 0.0, "second distribution's location")
+	l2 := flag.Float64("l2", 2.0, "second distribution's location")
 	n := flag.Int("n", 100000, "number of samples of cauchy distributions")
 
 	flag.Parse()
