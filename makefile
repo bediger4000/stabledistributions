@@ -1,4 +1,5 @@
-all: cauchya.hist cauchyb.hist cauchy.hist
+CAUCHYPLOTS = cauchy_histo.png cauchy_combo.png cauchy_combo_pdf.png
+all: $(CAUCHYPLOTS)
 
 normalcombo: normalcombo.go
 	go build normalcombo.go
@@ -12,14 +13,11 @@ normal.dat: normalcombo
 cauchy.dat: cauchycombo
 	./cauchycombo > cauchy.dat
 
-cauchya.hist: histogram.py cauchy.dat
-	cut -f1 cauchy.dat | ./histogram.py -i 0.2 -m -10 -r 21 -p - > cauchya.hist
-cauchyb.hist: histogram.py cauchy.dat
-	cut -f2 cauchy.dat | ./histogram.py -i 0.2 -m -10 -r 21 -p - > cauchyb.hist
-cauchy.hist: histogram.py cauchy.dat
-	cut -f3 cauchy.dat | ./histogram.py -i 0.2 -m -10 -r 21 -p - > cauchy.hist
+$(CAUCHYPLOTS): cauchy.dat cauchy_plots.r
+	R --no-save < cauchy_plots.r
 
 clean:
 	-rm -rf cauchycombo normalcombo
 	-rm -rf normal.dat
-	-rm -rf cauchy.dat cauchya.hist cauchyb.hist cauchy.hist
+	-rm -rf cauchy.dat
+	-rm -rf $(CAUCHYPLOTS)
