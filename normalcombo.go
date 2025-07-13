@@ -21,9 +21,10 @@ func main() {
 	stdDev1 := *s1
 	stdDev2 := *s2
 
+	fmt.Printf("#f\tg\tf+g\tf/g\n")
 	for i := 0; i <= iterations; i++ {
 		f := (rand.NormFloat64()*stdDev1 + mean1)
 		g := (rand.NormFloat64()*stdDev2 + mean2)
-		fmt.Printf("%.06f\t%.05f\t%.05f\n", f, g, f+g)
+		fmt.Printf("%.06f\t%.05f\t%.05f\t%.05f\n", f, g, f+g, f/g)
 	}
 }
