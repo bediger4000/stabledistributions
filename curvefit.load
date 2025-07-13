@@ -1,0 +1,22 @@
+# gnuplot commands to get a cauchy distribution
+# probabiity distribution function from a
+# density histogram from an R hist()
+#
+pdf(x) = 0.3183099/(g * (1.0+((x-l)/g)**2))
+fit pdf(x) 'density.coords' using 1:2 via g,l
+#
+# File 'density.coords' is a 2-column tab separated
+# text file hand edited from the combined cauchy
+# distributions
+# R commands:
+# df <- read.csv('cauchy.dat', sep='\t')
+# ab <- df$a.b
+# h <- hist(ab, breaks=100, freq=F)
+# sink('hist.txt')
+# print(h)
+# sink()
+#
+# had to hand edit the "$mids" and "$density"
+# "paragraphs" of file "hst.txt" together,
+# "$mids" column 1, # "$density" column 2
+# of "density.coords".
