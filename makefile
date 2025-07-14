@@ -1,5 +1,7 @@
 CAUCHYPLOTS = cauchy_histo.png cauchy_combo.png cauchy_combo_pdf.png
-all: $(CAUCHYPLOTS)
+NORMALPLOTS = normal_ratio.png
+
+all: $(CAUCHYPLOTS) $(NORMALPLOTS)
 
 normalcombo: normalcombo.go
 	go build normalcombo.go
@@ -16,8 +18,12 @@ cauchy.dat: cauchycombo
 $(CAUCHYPLOTS): cauchy.dat cauchy_plots.r
 	R --no-save < cauchy_plots.r
 
+$(NORMALPLOTS): normal.dat ratio_plots.r
+	R --no-save < ratio_plots.r
+
 clean:
 	-rm -rf cauchycombo normalcombo
 	-rm -rf normal.dat
 	-rm -rf cauchy.dat
 	-rm -rf $(CAUCHYPLOTS)
+	-rm -rf $(NORMALPLOTS)
