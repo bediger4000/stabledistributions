@@ -33,7 +33,7 @@ $(MULTIPLOTS): multi.dat multi_plots.r
 
 clean:
 	-rm -rf cauchycombo normalcombo multiuniform
-	-rm -rf normal.dat cauchy.dat normal.dat
+	-rm -rf normal.dat cauchy.dat multi.dat normal.dat
 	-rm -rf $(CAUCHYPLOTS)
 	-rm -rf $(NORMALPLOTS)
 	-rm -rf $(MULTIPLOTS)
