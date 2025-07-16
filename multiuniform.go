@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"math/rand"
 	"os"
 	"time"
 
@@ -16,18 +15,16 @@ func main() {
 	flag.Parse()
 
 	prngs := make([]*rng.UniformGenerator, *n)
-	factors := make([]float64, *n)
 
 	for i := 0; i < *n; i++ {
 		prngs[i] = rng.NewUniformGenerator(time.Now().UnixNano() + int64(os.Getpid()))
-		factors[i] = rand.Float64() * float64(*n)
 	}
 
 	fmt.Println("sum")
 	for i := 0; i < *m; i++ {
 		sum := 0.0
-		for k, rng := range prngs {
-			sum += rng.Float64() * factors[k]
+		for _, rng := range prngs {
+			sum += rng.Float64()
 		}
 		fmt.Printf("%.06f\n", sum)
 	}
